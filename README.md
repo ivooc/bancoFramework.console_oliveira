@@ -1,2 +1,1 @@
-# bancoFramework.console_oliveira
-Repositório para o PDI Framework
+Meu primeiro projeto PDI(bancoframework.console) - c#
