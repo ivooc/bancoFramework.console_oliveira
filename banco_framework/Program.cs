@@ -9,9 +9,23 @@ internal class Program
         Console.WriteLine("Por favor, identifique-se");
         Console.WriteLine("");
         var pessoa = Identificacao();
+        var opcaoMenu = MenuPrincipal();
+        switch (opcaoMenu)
+        {
+            case 1:
+                MenuDeposito();
+                break;
+
+            case 2:
+                MenuSaque();
+                break;
+
+            default:
+                break;
+        }
     }
 
-    static Pessoa Identificacao()
+    private static Pessoa Identificacao()
     {
         var pessoa = new Pessoa();
 
@@ -23,11 +37,39 @@ internal class Program
 
         Console.WriteLine("Seu CPF:");
         pessoa.Cpf = Console.ReadLine();
-        Console.Clear();
 
+        Console.Clear();
         Console.WriteLine($"Como posso ajudar {pessoa.Nome}?");
-        Console.ReadKey();
-        
+
         return pessoa;
+    }
+
+    private static int MenuPrincipal()
+    {
+        Console.WriteLine("1 - Depósito");
+        Console.WriteLine("2 - Saque");
+        Console.WriteLine("3 - Sair");
+        Console.WriteLine("----------");
+        Console.WriteLine("Selecione uma opção:");
+        if (!int.TryParse(Console.ReadKey().KeyChar.ToString(), out int resultado) || resultado < 1 || resultado > 3)
+        {
+            Console.Clear();
+            MenuPrincipal();
+        }
+        return resultado;
+    }
+
+    private static void MenuDeposito()
+    {
+        Console.WriteLine();
+        Console.WriteLine("Depósito");
+        Console.ReadKey();
+    }
+
+    private static void MenuSaque()
+    {
+        Console.WriteLine();
+        Console.WriteLine("Saque");
+        Console.ReadKey();
     }
 }
